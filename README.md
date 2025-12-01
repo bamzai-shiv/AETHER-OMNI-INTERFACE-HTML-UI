@@ -1,4 +1,4 @@
-# 🌐 AETHER | OMNI-INTERFACE v2.4
+#  AETHER | OMNI-INTERFACE v2.4
 
 ![Version](https://img.shields.io/badge/version-2.4.0-cyan?style=for-the-badge)
 ![Status](https://img.shields.io/badge/status-operational-success?style=for-the-badge)
