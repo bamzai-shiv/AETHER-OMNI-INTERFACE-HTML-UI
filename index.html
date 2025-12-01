@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHER | OMNI-INTERFACE</title>
+    <!-- Fonts: Orbitron (Headers) & Fira Code (Terminal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Fira+Code:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Boot Sequence Overlay -->
+    <div id="boot-screen">
+        <div class="boot-container">
+            <div class="spinner-ring"></div>
+            <h1 class="glitch" data-text="INITIALIZING...">INITIALIZING...</h1>
+            <div class="loading-bar"><div class="bar-fill"></div></div>
+            <div class="console-log" id="boot-log"></div>
+        </div>
+    </div>
+
+    <!-- Dynamic Background -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="scanline"></div>
+
+    <div class="app-wrapper" id="app" style="opacity: 0;">
+        <!-- Top HUD -->
+        <header class="top-bar">
+            <div class="brand">
+                <i class="ri-global-line"></i> AETHER<span>_OS</span> v2.4
+            </div>
+            <div class="top-stats">
+                <div class="stat-pill"><span class="pulse-dot"></span> SERVER: ONLINE</div>
+                <div class="stat-pill" id="clock">00:00:00</div>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            
+            <!-- LEFT COLUMN: Navigation & Status -->
+            <aside class="glass-panel sidebar">
+                <div class="profile-section">
+                    <div class="avatar-circle">
+                        <i class="ri-user-3-line"></i>
+                    </div>
+                    <h3>ADMIN</h3>
+                    <p class="rank">LEVEL 5 ACCESS</p>
+                </div>
+                
+                <nav class="nav-menu">
+                    <a href="#" class="active"><i class="ri-dashboard-3-line"></i> DASHBOARD</a>
+                    <a href="#"><i class="ri-terminal-box-line"></i> CONSOLE</a>
+                    <a href="#"><i class="ri-map-pin-range-line"></i> NETWORK MAP</a>
+                    <a href="#"><i class="ri-cpu-line"></i> RESOURCES</a>
+                </nav>
+
+                <div class="system-health">
+                    <h4>SYSTEM INTEGRITY</h4>
+                    <!-- SVG Circle Progress -->
+                    <div class="circle-chart">
+                        <svg viewBox="0 0 36 36" class="circular-chart blue">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="circle" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <text x="18" y="20.35" class="percentage">98%</text>
+                        </svg>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CENTER COLUMN: Main Data -->
+            <main class="content-area">
+                <!-- Widget: Analytics -->
+                <div class="glass-panel chart-panel">
+                    <div class="panel-header">
+                        <h2><i class="ri-pulse-line"></i> LIVE TELEMETRY</h2>
+                        <div class="panel-controls">
+                            <button class="active">CPU</button>
+                            <button>RAM</button>
+                            <button>NET</button>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="mainChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Widget: Modules Grid -->
+                <div class="modules-grid">
+                    <div class="glass-panel mini-card">
+                        <i class="ri-shield-check-line icon-glow"></i>
+                        <div class="mini-info">
+                            <span>FIREWALL</span>
+                            <strong>ACTIVE</strong>
+                        </div>
+                    </div>
+                    <div class="glass-panel mini-card">
+                        <i class="ri-wifi-line icon-glow warning"></i>
+                        <div class="mini-info">
+                            <span>LATENCY</span>
+                            <strong>24ms</strong>
+                        </div>
+                    </div>
+                    <div class="glass-panel mini-card">
+                        <i class="ri-hard-drive-2-line icon-glow"></i>
+                        <div class="mini-info">
+                            <span>STORAGE</span>
+                            <strong>45% FREE</strong>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- RIGHT COLUMN: Terminal & Logs -->
+            <aside class="glass-panel terminal-panel">
+                <div class="panel-header">
+                    <h2><i class="ri-code-box-line"></i> COMMAND LINE</h2>
+                </div>
+                <div class="terminal-window" id="terminal-output">
+                    <div class="line system-msg">Connected to AETHER_CORE...</div>
+                    <div class="line system-msg">Type 'help' for command list.</div>
+                </div>
+                <div class="terminal-input-area">
+                    <span class="prompt">admin@aether:~$</span>
+                    <input type="text" id="terminal-input" autocomplete="off" autofocus>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
